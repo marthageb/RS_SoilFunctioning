@@ -12,23 +12,14 @@ License:
  | file | description |
  |------|-------------|
  | brdf_topoR2py.py | apply NDVI mask, BRDF, and topographic corrections to individual flightlines. NEON flightlines accessed from the NEON data portal (https://data.neonscience.org/)|
-	
-  hyperspec_info.py:
-    add metadata fields to the .h5 topo/BRDF corrected reflectance data (output(s) from brdf_topoR2py.py)
-	RGBhyperspec.R:
-    convert .h5 file to RGB raster stack for original and BRDF corrected imagery mosaic all of the RGB flightlines together
-	extract_pixel_hyperspec.R:
-    extract corrected reflectance values for ENVI x/y cords (plant sample/plot locations)
-	refagg.R:
-    aggregate all of the extracted reflectance values together by taking the mean for each plot; combine reflectance values with plot averaged foliar chemistry values
-	PCA_plot_hyperspec.R:
-    select 10 pixels/plot, run PCA and calculate 95% confidence ellipse to ID outliers; reselect pixels until all 10 fall within the confidence ellipse. (iterate between ‘extract_pixel_hyperspec.R’ and ‘PCA_plot_hyperspec.R’)
-	PLSRloop.R:
-    perform brightness normalization on the corrected reflectance values; run PLSR in a loop storing model coefficients and performance metrics with each run; evaluate performance from all loop iterations and retain robust models; test model residuals for spatial auto correlation
-	analyze_reflect.py:
-    apply PLSR coefficients to the landscape (.h5 flightlines) for foliar N prediction. *Make sure brdf_topoR2py.py and hyperspec_info.py has been run on these flightlines before applying coefficients*
-	analyze_overlap.py:
-    calculate average values for all overlapping flightline areas
+ | hyperspec_info.py | add metadata fields to the .h5 topo/BRDF corrected reflectance data (output(s) from brdf_topoR2py.py)|
+ | RGBhyperspec.R | convert .h5 file to RGB raster stack for original and BRDF corrected imagery mosaic all of the RGB flightlines together|
+ | extract_pixel_hyperspec.R | extract corrected reflectance values for ENVI x/y cords (plant sample/plot locations)|
+ | refagg.R | aggregate all of the extracted reflectance values together by taking the mean for each plot; combine reflectance values with plot averaged foliar chemistry values|
+ | pCA_plot_hyperspec.R |select 10 pixels/plot, run PCA and calculate 95% confidence ellipse to ID outliers; reselect pixels until all 10 fall within the confidence ellipse. (iterate between ‘extract_pixel_hyperspec.R’ and ‘PCA_plot_hyperspec.R’)|
+ | PLSRloop.R | perform brightness normalization on the corrected reflectance values; run PLSR in a loop storing model coefficients and performance metrics with each run; evaluate performance from all loop iterations and retain robust models; test model residuals for spatial auto correlation| 
+ | analyze_reflect.py | apply PLSR coefficients to the landscape (.h5 flightlines) for foliar N prediction. *Make sure brdf_topoR2py.py and hyperspec_info.py has been run on these flightlines before applying coefficients*|
+ | analyze_overlap.py | calculate average values for all overlapping flightline areas|
 	
 ## RF_samplelocs - run RF analysis on data from sample locations. Perform variable reduction for downstream analysis
 	3mbuff.R:
