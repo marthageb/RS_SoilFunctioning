@@ -10,6 +10,7 @@ License:
 # Files and Descriptions
 ## hyperspec_foliarN - use hyperspectral data to predict foliar N across SRER
  | file | description |
+ |------|-------------|
  | brdf_topoR2py.py | apply NDVI mask, BRDF, and topographic corrections to individual flightlines. NEON flightlines accessed from the NEON data portal (https://data.neonscience.org/)|
 	
   hyperspec_info.py:
